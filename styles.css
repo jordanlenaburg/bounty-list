@@ -1,0 +1,83 @@
+body {
+    margin: auto;
+    /*    background-color: linear-gradient(to right, red, yellow);*/
+    background-image: url(images/angular.png),
+    linear-gradient(to bottom right, firebrick, gray);
+    background-attachment: fixed;
+    background-position: bottom right;
+    bottom: 0px;
+    right: 0px;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+table {
+    background-color: white;
+    width: 100%;
+    padding: 2px;
+    border: groove;
+    opacity: .75;
+}
+
+th {
+    padding: 1px;
+    text-align: center;
+}
+
+td {
+    border-top: solid black 1px;
+    padding: 2px;
+}
+
+.strikethrough {
+    text-decoration: line-through !important;
+}
+
+.small-img {
+    max-width: 30%;
+}
+
+.center {
+    text-align: center;
+}
+
+.body {
+    width: 90% !important;
+    margin: auto;
+}
+
+.smaller {
+    width: 75px !important;
+}
+
+.table-check {
+    width: 2%;
+}
+
+.table-title {
+    width: 25%;
+}
+
+.table-desc {
+    width: 28%;
+}
+
+.table-price {
+    width: 5%;
+}
+
+.table-img {
+    width: 15%;
+}
+
+.table-status {
+    width: 10%;
+}
+
+.table-id {
+    width: 15%;
+}
+
+.completedStyle {
+    text-decoration: line-through;
+}

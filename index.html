@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body ng-controller="mainCtrl">
+<div class="container align-center body">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h1>Jordan's Bounty list</h1>
+        </div>
+    </div>
+    <form>
+        <div class="row">
+            <div class="col-xs-2 col-md-2 text-right">
+                Title:
+            </div>
+            <div class="col-xs-2 col-md-2 text-left">
+                <input type="text" id="title" ng-model="title" placeholder="Bounty Title">
+            </div>
+            <div class="col-xs-2 col-md-2 text-right">
+                Description:
+            </div>
+            <div class="col-xs-2 col-md-2 text-left">
+                <input type="text" class="align-left" id="desc" ng-model="description" placeholder="What needs done?"
+                       required>
+            </div>
+            <div class="col-xs-2 col-md-2 text-right">
+                Price:
+            </div>
+            <div class="col-xs-2 col-md-2 text-left">
+                <input type="number" class="smaller" id="price" ng-model="price" placeholder="Price">
+            </div>
+        </div>
+        <div class="row align-justify">
+            <div class="col-xs-2 col-md-2 text-right">
+                Image:
+            </div>
+            <div class="col-xs-2 col-md-2 text-left">
+                <input type="url" id="img-url" ng-model="imgUrl" placeholder="Image URL of Bounty">
+            </div>
+            <div class="col-xs-2 col-md-2 text-right">
+                Completed?
+            </div>
+            <div class="col-xs-2 col-md-2 text-left">
+                No
+                <input type="radio" name="radio" ng-value="false" ng-model="completed" checked> Yes
+                <input type="radio" name="radio" ng-value="true" ng-model="completed">
+            </div>
+            <div class="col-xs-2 col-md-2 text-right">
+                Bounty ID:
+            </div>
+            <div class="col-xs-2 col-md-2 text-left">
+                <input type="text" class="smaller" id="bounty-id" placeholder="Bounty ID" ng-model="_id" disabled>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-6 text-right">
+                <button class="btn btn-success text-center" id="add" ng-click="addToList()">Add</button>
+            </div>
+            <div class="col-xs-6 col-md-6 text-left">
+                <button class="btn btn-info text-center" id="update" ng-click="updateToDo(newTodo)">Update</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <div class="row">
+        <div class="col-xs-6 col-md-6 text-center">
+            <button class="btn btn-info" id="get-list" ng-click="getList()">Get Current List</button>
+        </div>
+
+        <div class="col-xs-6 col-md-6 text-center">
+            <button class="btn btn-danger" id="del" ng-click="delToDo()">Delete Checked Item</button>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <table id="list">
+            <tr>
+                <th class="table-check">X</th>
+                <th class="table-title">Title</th>
+                <th class="table-desc">Description</th>
+                <th class="table-price">Price</th>
+                <th class="table-img">Image</th>
+                <th class="table-status">Completed</th>
+                <th class="table-id">Bounty ID</th>
+            </tr>
+
+            <tr ng-repeat="singleBounty in bountyList track by $index">
+                <td class="table-check"><input type="radio" class="deleter" name="deleter"
+                                               ng-click="selectToDo($index)"></td>
+                <td class="table-title" ng-class="{'completedStyle': singleBounty.completed}">{{singleBounty.title}}
+                </td>
+                <td class="table-desc" ng-class="{'completedStyle': singleBounty.completed}">
+                    {{singleBounty.description}}
+                </td>
+                <td class="center table-price" ng-class="{'completedStyle': singleBounty.completed}">
+                    {{singleBounty.price}}
+                </td>
+                <td class="center table-img" ng-class="{'completedStyle': singleBounty.completed}">
+                    <a href="{{singleBounty.imgUrl}}" target="_blank"><img class="small-img"
+                                                                           src="{{singleBounty.imgUrl}}"/></a>
+                </td>
+                <td class="center table-status" ng-class="{'completedStyle': singleBounty.completed}">
+                    {{singleBounty.completed}}
+                </td>
+                <td class="table-id" ng-class="{'completedStyle': singleBounty.completed}">{{singleBounty._id}}</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+
+</html>
